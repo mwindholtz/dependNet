@@ -1,0 +1,548 @@
+
+ObjectWind - DependNet v 2.1
+~ Martin Metrics are described at: www.ObjectMentor.com
+~ DependNet updates can be found at: www.ObjectWind.com
+
+
+|===== KEY FOR METRICS ================================================
+|     
+| Ca:  (UsedBy) Num of classes which are _UsedBy_ classes
+|       in an external package
+| Ce:  (Uses) Num of external classes which this package _Uses_
+| I:   usesClasses / ( usedByClasses + usesClasses )  
+| A:   AbstractClasses / TotalClasses                 
+|
+| For D' and tD':  0.0 == GOOD, 1.0 == Bad
+| --------------------------------------------------
+| D':  Abs( A + I - 1 )   
+| tD': Highest of 'D and tD' of all 'Uses' packages   
+|
+|                                                     
+|======================================================================
+
+Limitations: 
+ (1) Requires cfparse.jar available from www.ibm.alphaworks.com
+ (2) Cannot process classes or packages inside JAR files.
+ (3) Cannot follow dependencies created dynamically by Method.invoke()
+ (4) must execute in the directory under the target class
+     this is a CFParse bug.  I hope to have a work around soon.
+
+=============================================
+ Processing Package: alltests
+=============================================
+
+-----------------------------------------------------
+Package: [ javax.servlet.jsp.tagext ]
+(A#:0) (Classes#:1) (<- Ca:0) (-> Ce:0) 
+(A:0.0) (I:0.0) 
+(D':0.0) (tD':0.0) 
+* Not Pocessed
+(Uses Packages: 0)
+(UsedBy Packages: 1)
+         <- bcm.tags
+
+-----------------------------------------------------
+Package: [ junit.framework ]
+(A#:1) (Classes#:3) (<- Ca:0) (-> Ce:0) 
+(A:0.33333334) (I:0.0) 
+(D':0.6666666) (tD':0.6666666) 
+* Uses invoke()
+* Not Pocessed
+(Uses Packages: 0)
+(UsedBy Packages: 16)
+         <- alltests
+         <- bcm.basictype
+         <- bcm.beans
+         <- bcm.conversation
+         <- bcm.dbservice
+         <- bcm.dbvalidation
+         <- bcm.handlerfactory
+         <- bcm.handlers
+         <- bcm.jdbc
+         <- bcm.realhandlerfactory
+         <- bcm.rules
+         <- bcm.sql
+         <- bcm.tags
+         <- bcm.uivalidation
+         <- bcm.userDefault
+         <- bcm.util
+
+-----------------------------------------------------
+Package: [ bcm.dbvalidation ]
+(A#:0) (Classes#:15) (<- Ca:0) (-> Ce:7) 
+(A:0.0) (I:0.5555556) 
+(D':0.44444442) (tD':0.992) 
+(Uses Packages: 7)
+         -> [Ljava.lang  (0.0) 
+         -> bcm.basictype  (0.94076926) 
+         -> bcm.rules  (0.992) <=
+         -> bcm.service  (0.992) <=
+         -> bcm.util  (0.992) <=
+         -> junit.framework  (0.6666666) 
+         -> junit.swingui  (0.0) 
+(UsedBy Packages: 2)
+         <- alltests
+         <- bcm.handlers
+
+-----------------------------------------------------
+Package: [ junit.swingui ]
+(A#:0) (Classes#:1) (<- Ca:0) (-> Ce:0) 
+(A:0.0) (I:0.0) 
+(D':0.0) (tD':0.0) 
+* Not Pocessed
+(Uses Packages: 0)
+(UsedBy Packages: 8)
+         <- alltests
+         <- bcm.conversation
+         <- bcm.dbservice
+         <- bcm.dbvalidation
+         <- bcm.handlerfactory
+         <- bcm.handlers
+         <- bcm.realhandlerfactory
+         <- bcm.userDefault
+
+-----------------------------------------------------
+Package: [ [Ljava.lang.reflect ]
+(A#:0) (Classes#:2) (<- Ca:0) (-> Ce:0) 
+(A:0.0) (I:0.0) 
+(D':0.0) (tD':0.0) 
+* Not Pocessed
+(Uses Packages: 0)
+(UsedBy Packages: 1)
+         <- bcm.beans
+
+-----------------------------------------------------
+Package: [ org.exolab.castor.xml ]
+(A#:0) (Classes#:1) (<- Ca:0) (-> Ce:0) 
+(A:0.0) (I:0.0) 
+(D':0.0) (tD':0.0) 
+* Not Pocessed
+(Uses Packages: 0)
+(UsedBy Packages: 1)
+         <- bcm.rules
+
+-----------------------------------------------------
+Package: [ [Ljava.lang ]
+(A#:0) (Classes#:3) (<- Ca:0) (-> Ce:0) 
+(A:0.0) (I:0.0) 
+(D':0.0) (tD':0.0) 
+* Not Pocessed
+(Uses Packages: 0)
+(UsedBy Packages: 7)
+         <- bcm.basictype
+         <- bcm.beans
+         <- bcm.dbservice
+         <- bcm.dbvalidation
+         <- bcm.handlers
+         <- bcm.rules
+         <- bcm.userDefault
+
+-----------------------------------------------------
+Package: [ bcm.uivalidation ]
+(A#:0) (Classes#:13) (<- Ca:0) (-> Ce:3) 
+(A:0.0) (I:0.3846154) 
+(D':0.6153846) (tD':0.992) 
+(Uses Packages: 3)
+         -> bcm.basictype  (0.94076926) 
+         -> bcm.util  (0.992) <=
+         -> junit.framework  (0.6666666) 
+(UsedBy Packages: 2)
+         <- alltests
+         <- bcm.handlers
+
+-----------------------------------------------------
+Package: [ bcm.jsp ]
+(A#:0) (Classes#:2) (<- Ca:0) (-> Ce:2) 
+(A:0.0) (I:0.6) 
+(D':0.39999998) (tD':0.39999998) 
+(Uses Packages: 2)
+         -> javax.servlet  (0.0) 
+         -> javax.servlet.jsp  (0.0) 
+(UsedBy Packages: 1)
+         <- bcm.tags
+
+-----------------------------------------------------
+Package: [ javax.servlet.jsp ]
+(A#:0) (Classes#:3) (<- Ca:0) (-> Ce:0) 
+(A:0.0) (I:0.0) 
+(D':0.0) (tD':0.0) 
+* Not Pocessed
+(Uses Packages: 0)
+(UsedBy Packages: 2)
+         <- bcm.jsp
+         <- bcm.tags
+
+-----------------------------------------------------
+Package: [ bcm.util ]
+(A#:0) (Classes#:24) (<- Ca:0) (-> Ce:5) 
+(A:0.0) (I:0.13) 
+(D':0.87) (tD':0.992) 
+(Uses Packages: 5)
+         -> bcm.basictype  (0.94076926) 
+         -> bcm.dbservice  (0.992) <=
+         -> bcm.service  (0.992) <=
+         -> bcm.sql  (0.94076926) 
+         -> junit.framework  (0.6666666) 
+(UsedBy Packages: 11)
+         <- alltests
+         <- bcm.beans
+         <- bcm.dbservice
+         <- bcm.dbvalidation
+         <- bcm.handlerfactory
+         <- bcm.handlers
+         <- bcm.jdbc
+         <- bcm.rules
+         <- bcm.sql
+         <- bcm.uivalidation
+         <- bcm.userDefault
+
+-----------------------------------------------------
+Package: [ bcm.handlers ]
+(A#:4) (Classes#:135) (<- Ca:0) (-> Ce:16) 
+(A:0.02962963) (I:0.96825397) 
+(D':0.0021163821) (tD':0.992) 
+(Uses Packages: 16)
+         -> [Ljava.lang  (0.0) 
+         -> alltests  (0.992) <=
+         -> bcm.basictype  (0.94076926) 
+         -> bcm.beans  (0.992) <=
+         -> bcm.dbservice  (0.992) <=
+         -> bcm.dbvalidation  (0.992) <=
+         -> bcm.handlerfactory  (0.992) <=
+         -> bcm.jdbc  (0.94076926) 
+         -> bcm.rules  (0.992) <=
+         -> bcm.service  (0.992) <=
+         -> bcm.sql  (0.94076926) 
+         -> bcm.uivalidation  (0.992) <=
+         -> bcm.userDefault  (0.992) <=
+         -> bcm.util  (0.992) <=
+         -> junit.framework  (0.6666666) 
+         -> junit.swingui  (0.0) 
+(UsedBy Packages: 2)
+         <- alltests
+         <- bcm.realhandlerfactory
+
+-----------------------------------------------------
+Package: [ bcm.realhandlerfactory ]
+(A#:0) (Classes#:4) (<- Ca:0) (-> Ce:7) 
+(A:0.0) (I:0.84615386) 
+(D':0.15384614) (tD':0.992) 
+(Uses Packages: 7)
+         -> bcm.basictype  (0.94076926) 
+         -> bcm.handlerfactory  (0.992) <=
+         -> bcm.handlers  (0.992) <=
+         -> bcm.jdbc  (0.94076926) 
+         -> bcm.service  (0.992) <=
+         -> junit.framework  (0.6666666) 
+         -> junit.swingui  (0.0) 
+(UsedBy Packages: 2)
+         <- alltests
+         <- bcm.conversation
+
+-----------------------------------------------------
+Package: [ bcm.basictype ]
+(A#:1) (Classes#:25) (<- Ca:0) (-> Ce:2) 
+(A:0.04) (I:0.01923077) 
+(D':0.94076926) (tD':0.94076926) 
+(Uses Packages: 2)
+         -> [Ljava.lang  (0.0) 
+         -> junit.framework  (0.6666666) 
+(UsedBy Packages: 15)
+         <- alltests
+         <- bcm.beans
+         <- bcm.conversation
+         <- bcm.dbservice
+         <- bcm.dbvalidation
+         <- bcm.handlerfactory
+         <- bcm.handlers
+         <- bcm.jdbc
+         <- bcm.realhandlerfactory
+         <- bcm.rules
+         <- bcm.service
+         <- bcm.sql
+         <- bcm.uivalidation
+         <- bcm.userDefault
+         <- bcm.util
+
+-----------------------------------------------------
+Package: [ org.apache.oro.text.perl ]
+(A#:0) (Classes#:1) (<- Ca:0) (-> Ce:0) 
+(A:0.0) (I:0.0) 
+(D':0.0) (tD':0.0) 
+* Not Pocessed
+(Uses Packages: 0)
+(UsedBy Packages: 1)
+         <- bcm.rules
+
+-----------------------------------------------------
+Package: [ javax.servlet.http ]
+(A#:0) (Classes#:2) (<- Ca:0) (-> Ce:0) 
+(A:0.0) (I:0.0) 
+(D':0.0) (tD':0.0) 
+* Not Pocessed
+(Uses Packages: 0)
+(UsedBy Packages: 2)
+         <- bcm.conversation
+         <- bcm.tags
+
+-----------------------------------------------------
+Package: [ bcm.conversation ]
+(A#:0) (Classes#:19) (<- Ca:0) (-> Ce:13) 
+(A:0.0) (I:0.94736844) 
+(D':0.052631557) (tD':0.992) 
+(Uses Packages: 13)
+         -> bcm.basictype  (0.94076926) 
+         -> bcm.dbservice  (0.992) <=
+         -> bcm.handlerfactory  (0.992) <=
+         -> bcm.jdbc  (0.94076926) 
+         -> bcm.realhandlerfactory  (0.992) <=
+         -> bcm.service  (0.992) <=
+         -> bcm.userDefault  (0.992) <=
+         -> javax.servlet  (0.0) 
+         -> javax.servlet.http  (0.0) 
+         -> junit.framework  (0.6666666) 
+         -> junit.swingui  (0.0) 
+         -> org.grnds.facility.log  (0.0) 
+         -> org.grnds.structural.web  (0.0) 
+(UsedBy Packages: 2)
+         <- alltests
+         <- bcm.tags
+
+-----------------------------------------------------
+Package: [ [Lbcm.rules ]
+(A#:0) (Classes#:2) (<- Ca:0) (-> Ce:0) 
+(A:0.0) (I:0.0) 
+(D':0.0) (tD':0.0) 
+* Not Pocessed
+(Uses Packages: 0)
+(UsedBy Packages: 1)
+         <- bcm.rules
+
+-----------------------------------------------------
+Package: [ bcm.beans ]
+(A#:0) (Classes#:15) (<- Ca:0) (-> Ce:5) 
+(A:0.0) (I:0.7058824) 
+(D':0.29411763) (tD':0.992) 
+* Uses invoke()
+(Uses Packages: 5)
+         -> [Ljava.lang  (0.0) 
+         -> [Ljava.lang.reflect  (0.0) 
+         -> bcm.basictype  (0.94076926) 
+         -> bcm.util  (0.992) <=
+         -> junit.framework  (0.6666666) 
+(UsedBy Packages: 3)
+         <- alltests
+         <- bcm.handlers
+         <- bcm.tags
+
+-----------------------------------------------------
+Package: [ bcm.sql ]
+(A#:0) (Classes#:10) (<- Ca:0) (-> Ce:3) 
+(A:0.0) (I:0.53846157) 
+(D':0.46153843) (tD':0.94076926) 
+(Uses Packages: 3)
+         -> bcm.basictype  (0.94076926) <=
+         -> bcm.util  (0.992) 
+         -> junit.framework  (0.6666666) 
+(UsedBy Packages: 4)
+         <- alltests
+         <- bcm.dbservice
+         <- bcm.handlers
+         <- bcm.util
+
+-----------------------------------------------------
+Package: [ bcm.dbservice ]
+(A#:0) (Classes#:17) (<- Ca:0) (-> Ce:10) 
+(A:0.0) (I:0.546875) 
+(D':0.453125) (tD':0.992) 
+(Uses Packages: 10)
+         -> [Ljava.lang  (0.0) 
+         -> bcm.basictype  (0.94076926) 
+         -> bcm.jdbc  (0.94076926) 
+         -> bcm.rules  (0.992) <=
+         -> bcm.service  (0.992) <=
+         -> bcm.sql  (0.94076926) 
+         -> bcm.userDefault  (0.992) <=
+         -> bcm.util  (0.992) <=
+         -> junit.framework  (0.6666666) 
+         -> junit.swingui  (0.0) 
+(UsedBy Packages: 5)
+         <- alltests
+         <- bcm.conversation
+         <- bcm.handlers
+         <- bcm.userDefault
+         <- bcm.util
+
+-----------------------------------------------------
+Package: [ bcm.jdbc ]
+(A#:1) (Classes#:14) (<- Ca:0) (-> Ce:3) 
+(A:0.071428575) (I:0.4117647) 
+(D':0.5168067) (tD':0.94076926) 
+(Uses Packages: 3)
+         -> bcm.basictype  (0.94076926) <=
+         -> bcm.util  (0.992) 
+         -> junit.framework  (0.6666666) 
+(UsedBy Packages: 5)
+         <- alltests
+         <- bcm.conversation
+         <- bcm.dbservice
+         <- bcm.handlers
+         <- bcm.realhandlerfactory
+
+-----------------------------------------------------
+Package: [ bcm.userDefault ]
+(A#:0) (Classes#:26) (<- Ca:0) (-> Ce:8) 
+(A:0.0) (I:0.6666667) 
+(D':0.3333333) (tD':0.992) 
+(Uses Packages: 8)
+         -> [Ljava.lang  (0.0) 
+         -> bcm.basictype  (0.94076926) 
+         -> bcm.dbservice  (0.992) <=
+         -> bcm.handlerfactory  (0.992) <=
+         -> bcm.service  (0.992) <=
+         -> bcm.util  (0.992) <=
+         -> junit.framework  (0.6666666) 
+         -> junit.swingui  (0.0) 
+(UsedBy Packages: 4)
+         <- alltests
+         <- bcm.conversation
+         <- bcm.dbservice
+         <- bcm.handlers
+
+-----------------------------------------------------
+Package: [ bcm.service ]
+(A#:0) (Classes#:10) (<- Ca:0) (-> Ce:1) 
+(A:0.0) (I:0.0080) 
+(D':0.992) (tD':0.992) 
+(Uses Packages: 1)
+         -> bcm.basictype  (0.94076926) 
+(UsedBy Packages: 9)
+         <- bcm.conversation
+         <- bcm.dbservice
+         <- bcm.dbvalidation
+         <- bcm.handlerfactory
+         <- bcm.handlers
+         <- bcm.realhandlerfactory
+         <- bcm.rules
+         <- bcm.userDefault
+         <- bcm.util
+
+-----------------------------------------------------
+Package: [ org.grnds.facility.log ]
+(A#:0) (Classes#:1) (<- Ca:0) (-> Ce:0) 
+(A:0.0) (I:0.0) 
+(D':0.0) (tD':0.0) 
+* Not Pocessed
+(Uses Packages: 0)
+(UsedBy Packages: 1)
+         <- bcm.conversation
+
+-----------------------------------------------------
+Package: [ bcm.rules ]
+(A#:0) (Classes#:8) (<- Ca:0) (-> Ce:8) 
+(A:0.0) (I:0.5) 
+(D':0.5) (tD':0.992) 
+(Uses Packages: 8)
+         -> [Lbcm.rules  (0.0) 
+         -> [Ljava.lang  (0.0) 
+         -> bcm.basictype  (0.94076926) 
+         -> bcm.service  (0.992) <=
+         -> bcm.util  (0.992) <=
+         -> junit.framework  (0.6666666) 
+         -> org.apache.oro.text.perl  (0.0) 
+         -> org.exolab.castor.xml  (0.0) 
+(UsedBy Packages: 4)
+         <- alltests
+         <- bcm.dbservice
+         <- bcm.dbvalidation
+         <- bcm.handlers
+
+-----------------------------------------------------
+Package: [ bcm.tags ]
+(A#:0) (Classes#:7) (<- Ca:0) (-> Ce:7) 
+(A:0.0) (I:0.9285714) 
+(D':0.0714286) (tD':0.992) 
+(Uses Packages: 7)
+         -> bcm.beans  (0.992) <=
+         -> bcm.conversation  (0.992) <=
+         -> bcm.jsp  (0.39999998) 
+         -> javax.servlet.http  (0.0) 
+         -> javax.servlet.jsp  (0.0) 
+         -> javax.servlet.jsp.tagext  (0.0) 
+         -> junit.framework  (0.6666666) 
+(UsedBy Packages: 1)
+         <- alltests
+
+-----------------------------------------------------
+Package: [ org.grnds.structural.web ]
+(A#:0) (Classes#:2) (<- Ca:0) (-> Ce:0) 
+(A:0.0) (I:0.0) 
+(D':0.0) (tD':0.0) 
+* Not Pocessed
+(Uses Packages: 0)
+(UsedBy Packages: 1)
+         <- bcm.conversation
+
+-----------------------------------------------------
+Package: [ javax.servlet ]
+(A#:0) (Classes#:2) (<- Ca:0) (-> Ce:0) 
+(A:0.0) (I:0.0) 
+(D':0.0) (tD':0.0) 
+* Not Pocessed
+(Uses Packages: 0)
+(UsedBy Packages: 2)
+         <- bcm.conversation
+         <- bcm.jsp
+
+-----------------------------------------------------
+Package: [ bcm.handlerfactory ]
+(A#:2) (Classes#:8) (<- Ca:0) (-> Ce:5) 
+(A:0.25) (I:0.092307694) 
+(D':0.6576923) (tD':0.992) 
+(Uses Packages: 5)
+         -> bcm.basictype  (0.94076926) 
+         -> bcm.service  (0.992) <=
+         -> bcm.util  (0.992) <=
+         -> junit.framework  (0.6666666) 
+         -> junit.swingui  (0.0) 
+(UsedBy Packages: 5)
+         <- alltests
+         <- bcm.conversation
+         <- bcm.handlers
+         <- bcm.realhandlerfactory
+         <- bcm.userDefault
+
+-----------------------------------------------------
+Package: [ alltests ]
+(A#:0) (Classes#:2) (<- Ca:0) (-> Ce:17) 
+(A:0.0) (I:0.95) 
+(D':0.050000012) (tD':0.992) 
+(Uses Packages: 17)
+         -> bcm.basictype  (0.94076926) 
+         -> bcm.beans  (0.992) <=
+         -> bcm.conversation  (0.992) <=
+         -> bcm.dbservice  (0.992) <=
+         -> bcm.dbvalidation  (0.992) <=
+         -> bcm.handlerfactory  (0.992) <=
+         -> bcm.handlers  (0.992) <=
+         -> bcm.jdbc  (0.94076926) 
+         -> bcm.realhandlerfactory  (0.992) <=
+         -> bcm.rules  (0.992) <=
+         -> bcm.sql  (0.94076926) 
+         -> bcm.tags  (0.992) <=
+         -> bcm.uivalidation  (0.992) <=
+         -> bcm.userDefault  (0.992) <=
+         -> bcm.util  (0.992) <=
+         -> junit.framework  (0.6666666) 
+         -> junit.swingui  (0.0) 
+(UsedBy Packages: 1)
+         <- bcm.handlers
+
+
+bcm.dbvalidation
+      |--> bcm.rules
+      |--> bcm.util <----\ 
+      |--> bcm.dbservice
+      |--> bcm.jdbc
+      |--> bcm.util ----^ 
+
